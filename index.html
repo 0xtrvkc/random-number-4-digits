@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #randomNumber {
+            font-size: 10em; /* Adjust the font size as needed */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rally SPGE170</h1>
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+    <p id="randomNumber"></p>
+
+    <script>
+        function generateRandomNumber() {
+            // Generate an array of digits from 1 to 8
+            const digits = Array.from({ length: 8 }, (_, index) => index + 1);
+
+            // Shuffle the array
+            for (let i = digits.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [digits[i], digits[j]] = [digits[j], digits[i]];
+            }
+
+            // Take the first 4 digits
+            const randomFourDigits = digits.slice(0, 4);
+
+            // Display the result
+            document.getElementById('randomNumber').textContent = randomFourDigits.join(' ');
+        }
+    </script>
+</body>
+</html>
